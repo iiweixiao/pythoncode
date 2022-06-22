@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>少数派的生活方式</h1>
+    <ul>
+        {% for item in news_list %}
+            <li>{{ item.title }}      评论数：{{ item.comment_count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
