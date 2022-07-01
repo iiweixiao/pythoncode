@@ -29,7 +29,7 @@ def parse_page(url, timestamp):
 
 
 def mid_data(mid):
-    """ 获取某个up主视频信息 """
+    """ 获取某个up主视频信息 """ƒ
     api_url = f'https://api.bilibili.com/x/space/arc/search?mid={mid}&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp'
 
     # 1小时的时间戳3600
