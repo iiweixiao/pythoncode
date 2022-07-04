@@ -33,7 +33,7 @@ def mid_data(mid):
     api_url = f'https://api.bilibili.com/x/space/arc/search?mid={mid}&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp'
 
     # 1小时的时间戳3600
-    timestamp = time.time() - 3600 * 24 * 1.5
+    timestamp = time.time() - 3600 * 24 * 1.2
 
     # 解析一页，返回data_list
     data_list = parse_page(api_url, timestamp)
@@ -67,13 +67,15 @@ def send_email(r_addr, content, subject='python'):
 
 
 def parse_ids():
-    if not os.path.exists('up_ids.txt'):
-        with open('up_ids.txt', 'w') as f:
+    path = os.path.dirname(os.path.abspath(__file__))
+    txt = os.path.join(path, 'up_ids.txt')
+    if not os.path.exists(txt):
+        with open(txt, 'w') as f:
             up_id = '20165629:共青团中央'
             f.write(up_id)
 
     up_ids = []
-    with open('up_ids.txt', 'r') as f:
+    with open(txt, 'r') as f:
         s = f.read()
 
     lst = s.splitlines()

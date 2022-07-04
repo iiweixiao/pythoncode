@@ -1,0 +1,1 @@
+# [最新Python的web开发全家桶（django+前端+数据库）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1rT4y1v7uQ?p=31&vd_source=e7ed50c0d7d2387c7423c27fa17f7af5)
