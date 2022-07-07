@@ -90,7 +90,7 @@ def bilibili():  # put application's code here
                     cursor.execute(sql, [author, title, href, created])
                     conn.commit()
 
-    sql1 = 'select * from bili'
+    sql1 = 'select * from bili order by author asc'
     cursor.execute(sql1)
     data_list = cursor.fetchall()
 

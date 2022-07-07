@@ -17,17 +17,17 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>id</th>
+{#            <th>id</th>#}
             <th>up主</th>
             <th>标题</th>
-            <th>连接</th>
+            <th>链接</th>
             <th>创建时间</th>
         </tr>
         </thead>
         <tbody>
         {% for item in data %}
             <tr>
-                <td>{{ item.id }}</td>
+{#                <td>{{ item.id }}</td>#}
                 <td>{{ item.author }}</td>
                 <td>{{ item.title }}</td>
                 <td><a href="{{ item.href }}" target="_blank">{{ item.href }}</a></td>
