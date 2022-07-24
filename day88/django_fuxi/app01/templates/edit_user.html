@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>修改用户</h1>
+        <a href="/info/list">返回用户列表</a>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="name" value="{{ data.name }}">
+            <input type="text" name="password" value="{{ data.password }}">
+            <input type="text" name="age" value="{{ data.age }}">
+            <input type="submit" value="提交" class="btn btn-primary">
+        </form>
+    </div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script data-jc="35" data-jc-version="r20220706" data-jcp-root-elem="#mys-content" data-jcp-allow-rerender="false"
+            data-jcp-allow-scale="false" data-jcp-allow-upscale="false"
+            data-jcp-viewport-entered-threshold="0">(function () {/*  Copyright The Closure Library Authors. SPDX-License-Identifier: Apache-2.0 */
+        'use strict';
+        var h = this || self;/*  SPDX-License-Identifier: Apache-2.0 */
+        function l(a) {
+            let b = 0;
+            return function (c) {
+                h.clearTimeout(b);
+                const e = arguments;
+                b = h.setTimeout(function () {
+                    a.apply(void 0, e)
+                }, 100)
+            }
+        };let m = [];
+        const q = () => {
+            const a = m;
+            m = [];
+            for (const b of a) try {
+                b()
+            } catch {
+            }
+        };
+        var r = a => {
+            m.push(a);
+            1 == m.length && (window.Promise ? Promise.resolve().then(q) : window.setImmediate ? setImmediate(q) : setTimeout(q, 0))
+        }, u = a => {
+            var b = t;
+            "complete" === b.readyState || "interactive" === b.readyState ? r(a) : b.addEventListener("DOMContentLoaded", a)
+        }, w = a => {
+            var b = v;
+            "complete" === b.document.readyState ? r(a) : b.addEventListener("load", a)
+        };
+        var t = document, v = window;
+
+        function x({threshold: a, target: b, i: c, l: e}) {
+            if (window.IntersectionObserver) {
+                var f = !1;
+                (new IntersectionObserver(g => {
+                    0 !== g.length && g[0].isIntersecting && (!f && c && c(), f = !0, e && e())
+                }, {threshold: a})).observe(b)
+            }
+        };var y = class {
+            constructor() {
+                this.channel = 4;
+                (this.g = !(!window.mys || !window.mys.pingback)) && this.setData(43, Date.now() - window.mys.pingback.getBaseTime())
+            }
+
+            setAttribute(a, b) {
+                this.g && window.mys.pingback.setAttribute(a, b)
+            }
+
+            setData(a, b) {
+                this.g && window.mys.pingback.setData(a, b, this.channel)
+            }
+
+            send(a) {
+                this.g && window.mys.pingback.send(a)
+            }
+
+            h(a) {
+                if (this.g) {
+                    for (const b in a) a.hasOwnProperty(b) && this.setData(b, a[b]);
+                    this.send(void 0)
+                }
+            }
+        };
+        var z = class {
+            constructor(a) {
+                this.j = a;
+                this.data = [];
+                this.g = []
+            }
+
+            setData(a, b, c) {
+                this.j.includes(c) && this.data.push({key: a, value: b, channel: c})
+            }
+
+            setAttribute(a, b) {
+                this.g.push({key: a, value: b})
+            }
+        };
+        var A = class {
+            constructor() {
+                this.channel = 4;
+                this.g = new z([this.channel])
+            }
+
+            setAttribute(a, b) {
+                this.g.setAttribute(a, b)
+            }
+
+            setData(a, b) {
+                this.g.setData(a, b, this.channel)
+            }
+
+            send() {
+            }
+
+            h(a) {
+                for (const b in a) a.hasOwnProperty(b) && this.setData(b, a[b])
+            }
+        };
+        var B = a => {
+            var b = window;
+            const c = e => {
+                let f;
+                try {
+                    f = JSON.parse(e.data)
+                } catch (g) {
+                    return
+                }
+                !f || "sth" !== f.googMsgType || a(f, e)
+            };
+            b.addEventListener && b.addEventListener("message", c, !1)
+        };
+
+        function C(a, b, c) {
+            if (20 > b || 20 > c) return !1;
+            const e = Number(a.getAttribute("x-frame-width"));
+            a = Number(a.getAttribute("x-frame-height"));
+            return e && a && e === b && a === c ? !1 : !0
+        }
+
+        function D(a, b) {
+            if (!b || "resize-result" != b.msg_type || b.r_status) {
+                b = window.innerWidth;
+                var c = window.innerHeight;
+                C(a, b, c) && (a.setAttribute("x-frame-width", String(b)), a.setAttribute("x-frame-height", String(c)), a.style.width = `${b}px`, a.style.height = `${c}px`, a.dispatchEvent(new CustomEvent("browserRender")))
+            }
+        }
+
+        function E() {
+            var a = F, b = G, c = "true" === b["allow-rerender"];
+            const e = "true" === b["allow-scale"], f = "true" === b["allow-upscale"];
+            a.dispatchEvent(new CustomEvent("browserRender"));
+            const g = (void 0)?.m() ? new A : new y;
+            c ? (D(a), c = d => D(a, d), B(c), window.addEventListener("orientationchange", c), window.addEventListener("resize", c)) : e && (c = l(() => {
+                var d = window.innerWidth;
+                const k = window.innerHeight, n = Number(a.getAttribute("x-frame-width")),
+                    p = Number(a.getAttribute("x-frame-height"));
+                g.h({scale_start: `${n}x${p}x${d}x${k}`});
+                if (C(a, d, k) && !(20 > Math.abs(n - d) && 20 > Math.abs(p - k)) || a.style.transform) d = Math.min(d / n, k / p), f || (d = Math.min(1, d)), a.style.transform = 1 == d ? "" : `scale(${d})`, a.style.webkitTransform = 1 == d ? "" : `scale(${d})`, g.h({scale_happen: d})
+            }), void 0 != window.AFMA_Communicator && void 0 != window.AFMA_Communicator.addEventListener && window.AFMA_Communicator.addEventListener("onshow", c), window.addEventListener("resize", c));
+            u(() => {
+                a.classList.add("dom-content-loaded")
+            });
+            w(() => {
+                a.classList.add("page-loaded")
+            });
+            b = Number(b["viewport-entered-threshold"] || 0);
+            0 < b && x({
+                threshold: Math.min(1, b / 100), target: a, i: () => {
+                    a.classList.add("viewport-entered")
+                }
+            })
+        };const H = function (a, b = null) {
+            return b && b.getAttribute("data-jc") === String(a) ? b : document.querySelector(`[${"data-jc"}="${a}"]`)
+        }(35, document.currentScript);
+        if (null == H) throw Error("JSC not found 35");
+        var G;
+        const I = {}, J = H.attributes;
+        for (let a = J.length - 1; 0 <= a; a--) {
+            const b = J[a].name;
+            0 === b.indexOf("data-jcp-") && (I[b.substring(9)] = J[a].value)
+        }
+        G = I;
+        const K = G["root-elem"];
+        if (K) {
+            var F = t.querySelector(K);
+            F && E()
+        }
+        ;
+    }).call(this);</script>
+</head>
+<body>
+
+</body>
+</html>

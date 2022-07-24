@@ -35,7 +35,7 @@ def add_user():  # put application's code here
 
 @app.route('/user/info', methods=['GET', 'POST'])
 def user_info():  # put application's code here
-
+    # 感觉下面这段重复了，没测试
     name = request.form.get('user')
     password = request.form.get('password')
     mobile = request.form.get('mobile')

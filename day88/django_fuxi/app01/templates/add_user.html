@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>添加用户</h1>
+        <a href="/info/list">返回用户列表</a>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="姓名">
+            <input type="text" name="password" placeholder="密码">
+            <input type="text" name="age" placeholder="年龄">
+            <input type="submit" value="添加" class="btn btn-primary">
+        </form>
+    </div>
+
+{% endblock %}
