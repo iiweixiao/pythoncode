@@ -53,7 +53,6 @@ def delete_user(request):
     return redirect('/info/list')
     # return HttpResponse('删除成功')
 
-
 def edit_user(request, nid):
     if request.method == 'GET':
         data = UserInfo.objects.filter(id=nid).first()
