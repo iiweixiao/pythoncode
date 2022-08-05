@@ -2,7 +2,10 @@
 
 {% block content %}
     <div class="container">
-        <h1>Hi, everybody!</h1>
+        <h1>视频列表</h1>
+        <div>
+            <a href="refresh">刷新视频列表</a>
+        </div>
         <div>
             <table class="table table-primary">
                 <thead>
@@ -22,7 +25,7 @@
                         <td>{{ obj.id }}</td>
                         <td>{{ obj.name }}</td>
                         <td>{{ obj.title }}</td>
-                        <td>{{ obj.href }}</td>
+                        <td><a href="{{ obj.href }}" target="_blank">{{ obj.href }}</a></td>
                         <td>{{ obj.created }}</td>
                         <td>{{ obj.status }}</td>
                         <td>
