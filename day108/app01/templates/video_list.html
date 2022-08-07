@@ -3,17 +3,17 @@
 {% block content %}
     <div class="container">
         <h1>视频列表</h1>
-        <div>
+        <div style="margin-top: 30px;">
             <a href="refresh">刷新视频列表</a>
         </div>
-        <div>
-            <table class="table table-primary">
+        <div style="margin-top: 20px;">
+            <table class="table table-bordered table-light">
                 <thead>
                 <tr>
                     <th>id</th>
                     <th>up主</th>
                     <th>视频标题</th>
-                    <th>视频链接</th>
+{#                    <th>视频链接</th>#}
                     <th>发布时间</th>
                     <th>状态</th>
                     <th>操作</th>
@@ -24,10 +24,9 @@
                     <tr>
                         <td>{{ obj.id }}</td>
                         <td>{{ obj.name }}</td>
-                        <td>{{ obj.title }}</td>
-                        <td><a href="{{ obj.href }}" target="_blank">{{ obj.href }}</a></td>
+                        <td><a href="{{ obj.href }}" target="_blank">{{ obj.title }}</a></td>
                         <td>{{ obj.created }}</td>
-                        <td>{{ obj.status }}</td>
+                        <td>{{ obj.get_status_display }}</td>
                         <td>
                             <button>删除</button>
                         </td>
