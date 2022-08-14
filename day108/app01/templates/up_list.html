@@ -36,7 +36,8 @@
                         <td>{{ obj.mid }}</td>
                         <td>{{ obj.name }}</td>
                         <td>
-                            <button>删除</button>
+                            <a href="/{{ obj.id }}/edit">编辑</a>
+                            <a href="/{{ obj.id }}/delete">删除</a>
                         </td>
                     </tr>
                 {% endfor %}

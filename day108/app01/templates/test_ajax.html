@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+
+        <h1>测试ajax</h1>
+{#        <input type="button" class="btn btn-primary" value="点击" onclick="clickMe();"/>#}
+        <input id="btn1" type="button" class="btn btn-primary" value="点击" />
+    </div>
+
+{% endblock %}
+
+{% block js %}
+{#    <script type="text/javascript">#}
+{#        function clickMe() {#}
+{#            $.ajax({#}
+{#                url: '/test/ajax/test/',#}
+{#                type: "post",#}
+{#                data: {#}
+{#                    n1: 123,#}
+{#                    n2: 456,#}
+{#                },#}
+{#                success: function (res) {#}
+{#                    console.log(res);#}
+{#                }#}
+{#            })#}
+{#        }#}
+{##}
+{#    </script>#}
+{#    <script type="text/javascript">#}
+{#        $(function () {#}
+{#            bindBtn1Event();#}
+{#        })#}
+{##}
+{#        function bindBtn1Event() {#}
+{#            $("#btn1").click(function () {#}
+{#                $.ajax({#}
+{#                    url: '/test/ajax/test/',#}
+{#                    type: "post",#}
+{#                    data: {#}
+{#                        n1: 123,#}
+{#                        n2: 456,#}
+{#                    },#}
+{#                    dataType: "JSON",#}
+{#                    success: function (res) {#}
+{#                        console.log(res);#}
+{#                        console.log(res.status);#}
+{#                        console.log(res.data);#}
+{#                    }#}
+{#                })#}
+{#            })#}
+{#        }#}
+{#    </script>#}
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").click(function () {
+                $.ajax({
+                    url: '/test/ajax/test/',
+                    type: "post",
+                    data: {
+                        n1: 123,
+                        n2: 456,
+                    },
+                    dataType: "JSON",
+                    success: function (res) {
+                        console.log(res);
+                        console.log(res.status);
+                        console.log(res.data);
+                    }
+                })
+            })
+        })
+
+
+    </script>
+
+
+{% endblock %}
